@@ -1,0 +1,19 @@
+Zadání: Máte za úkol pomocí metody Monte Carlo simulovat a odhadnout pravděpodobnost výhry při sázení na ruletu.
+
+Postup:
+
+1. Definujte pravidla hry a sázky. Například, představme si ruletu se 37 čísly (čísla 0 až 36) a sázky na jednotlivá čísla.
+
+2. Napište program, který bude simulovat hru na ruletu. Program by měl náhodně generovat výsledek roztočení rulety (náhodné číslo od 0 do 36) a vyhodnotit výhry a prohry sázek.
+
+3. Zvolte sázky, které budete simulovat. Například, můžete zkusit sázet na jedno konkrétní číslo, na sudá/lichá čísla, na barvu (červená/černá) nebo na skupinu čísel.
+
+4. Spusťte program s dostatečným počtem simulací (například 10 000 nebo 100 000).
+
+5. Spočítejte podíl výherních simulací ku celkovému počtu simulací.
+
+6. Tento podíl představuje odhad pravděpodobnosti výhry při dané sázce na ruletu.
+
+Poznámka: Pravděpodobnost výhry na ruletě se může lišit v závislosti na sázce. Záleží na pravidlech dané rulety (např. zda obsahuje dvojnulovou nulu) a zvolené sázce. Vyberte sázku, kterou chcete simulovat, a zaměřte se na odhad pravděpodobnosti právě této sázky.
+
+Toto zadání vám umožní využít metodu Monte Carlo k odhadu pravděpodobnosti výhry při sázení na ruletu. Pro přesnější odhad pravděpodobnosti je vhodné provést větší počet simulací.
