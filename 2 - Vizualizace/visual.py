@@ -1,8 +1,10 @@
+from pathlib import Path
 import numpy
 import pandas as pd
 import matplotlib.pyplot as plt
-
-DataSet = pd.read_csv("C:\\Users\\Matav\\Desktop\\Python\\SeminarniPraceKMSW\\2 - Vizualizace\\Dataset\\Dataset.csv")
+import matplotlib.ticker as ticker
+import math
+DataSet = pd.read_csv(str(Path.cwd())+"\\2 - Vizualizace\\Dataset\\Dataset.csv")
 
 #Rozdělení songů podle typu (Album, Single, Kompilace)
 grouped = DataSet.groupby(["Album_type"]).size()
@@ -71,20 +73,54 @@ views_duration = pd.DataFrame(zip(DataSet["Stream"],DataSet["Views"]), columns=[
 
 views_duration["Stream"] = views_duration["Stream"].apply(lambda x : x /1000000)
 views_duration["Views"] = views_duration["Views"].apply(lambda x : x /1000000)  
-views_duration = views_duration.sort_values(by="Stream")
+views_duration = views_duration.sort_values(by="Views")
+views_duration = views_duration.reset_index(drop=True);
 #print(views_duration["Duration_ms"].apply(lambda x : x /1000))
 #views_duration.plot(x = "Duration_ms", y = "Views", alpha=0.5)
-
-fig, ax1 = plt.subplots(1,2,sharex=True)
+#views_duration = views_duration.head()
+#print(views_duration)
+'''
+fig =  plt.figure()
+ax1 = fig.add_subplot(1, 1, 1)
 ax1.set_xlabel('Písničky')
-
 ax1.plot(views_duration["Stream"], color="green")
-ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+ax1.plot(views_duration["Views"], color="red")
+'''
+'''
+fig =  plt.figure()
+ax1 = fig.add_subplot(1, 1, 1)
+ax1.set_xlabel('Písničky')
+for index, row in views_duration.iterrows():
+    p = ax1.bar(index,row["Stream"],width=0.1,label="Stream")
+    p = ax1.bar(index,row["Views"],width=0.1,label="Views")
+    ax1.bar_label(p, label_type='center')
+'''
 
-ax2.plot(views_duration["Views"], color="red")
-ax1.set_box_aspect(1)
+views_duration = views_duration.groupby(pd.qcut(views_duration.index, 10)).mean()
+views_duration = views_duration.reset_index(drop=True);
+label1 = "Stream"
+label2 = "Views"
+fig,ax1 =  plt.subplots()
+ax1.set_ylabel("Průměr celkového počtu Shlednutí/Streamu (v Mil)")
+#ax1.yaxis.set_major_formatter(lambda y : f"{y}M")
 
+views_duration["Stream"] = views_duration["Stream"].apply(lambda x : round(x,3))
+views_duration["Views"] = views_duration["Views"].apply(lambda x : round(x,3))  
+
+ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,pos: f"{y:.0f}M"))
+for index, row in views_duration.iterrows():
+    p = ax1.bar(str((index)*10)+"-"+str((index+1)*10)+"%",row["Stream"],width=0.6,label=label1, color="green")
+    ax1.bar_label(p,fmt="%gM", label_type='center')
+    p = ax1.bar(str((index)*10)+"-"+str((index+1)*10)+"%",row["Views"],width=0.6,label=label2,bottom=row["Stream"],color="red")
+    ax1.bar_label(p,fmt="%gM", label_type='center')
+
+ax1.set_xlabel("Popularita (percentil)")
+
+ax1.legend(["Stream","Views"])
+print(views_duration)
 plt.show()
+
+
 
 
 
