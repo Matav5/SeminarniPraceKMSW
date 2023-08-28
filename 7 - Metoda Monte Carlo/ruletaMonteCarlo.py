@@ -2,7 +2,10 @@
 from random import randint
 import matplotlib.pyplot as plt
 import colorama
+from random import seed
 
+
+seed(125)
 
 class cislo:
     vyherniCislo : int
@@ -122,7 +125,7 @@ def vyhodnotStrategii(vyherni_cisla):
     ax.set_xlabel("Počet pokusů")
     ax.set_ylabel("Profit")
     ax.yaxis.set_major_formatter(lambda x, y: "{:n}".format(x)+"$")
-    print(pocetHitu / i * 100)
+    print("Výherní šance je: " +str(pocetHitu / i * 100) + "%")
     plt.show()
 
 
