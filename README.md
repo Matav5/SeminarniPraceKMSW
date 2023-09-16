@@ -1,6 +1,6 @@
 # SeminarniPraceKMSW
-[Vizualizace](2 - Vizualizace\Vizualizace Dat.pdf)
+[Vizualizace](https://github.com/Matav5/SeminarniPraceKMSW/blob/main/2%20-%20Vizualizace/Vizualizace%20Dat.pdf)
 
-[Generatory](6 - Generatory\Generatory.pdf)
+[Generatory](https://github.com/Matav5/SeminarniPraceKMSW/blob/main/6 - Generatory\Generatory.pdf)
 
-[Metoda Monte Carlo](7 - Metoda Monte Carlo\Metoda Monte Carlo.pdf)
+[Metoda Monte Carlo](https://github.com/Matav5/SeminarniPraceKMSW/blob/main/7 - Metoda Monte Carlo\Metoda Monte Carlo.pdf)
