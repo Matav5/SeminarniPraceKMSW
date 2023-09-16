@@ -7,7 +7,7 @@ from random import seed
 
 seed(125)
 
-class cislo:
+class cisloSazky:
     vyherniCislo : int
     multiplier : float
     def __init__(self,vyherniCislo,multiplier) -> None:
@@ -34,7 +34,7 @@ def pridejMultiplierKCislum(staryList : list, multiplier : float):
     newList = list()
 
     for vyherniCislo in staryList:
-        newList.append(cislo(vyherniCislo, multiplier))
+        newList.append(cisloSazky(vyherniCislo, multiplier))
 
     return newList
 
@@ -44,7 +44,6 @@ nasobnaCervena = pridejMultiplierKCislum(cervena,2)
 nasobnaCerna = pridejMultiplierKCislum(cerna,2)
 
 
-#Poupravit => má mi dávat jenom jestli se trefí nebo ne
 def monte_Carlo(pocet_iteraci, vyherniCisla :list):
     postupList = list()  
     shots = dict()
@@ -93,13 +92,9 @@ def monte_Carlo(pocet_iteraci, vyherniCisla :list):
     return postupList
 '''
 
-
-seznam = list()
-seznam.append(cislo(0,14))
-
-def vyhodnotStrategii(vyherni_cisla):
+def vyhodnotStrategii(vyherni_cisla,pokusu = 10000):
     sazba = 50
-    postupList = monte_Carlo(10000, vyherni_cisla)
+    postupList = monte_Carlo(pokusu, vyherni_cisla)
     graf = list()
     vydelanePenize = 0
     i = 0
@@ -132,3 +127,7 @@ def vyhodnotStrategii(vyherni_cisla):
 vyhodnotStrategii(nasobnaZelena)
 vyhodnotStrategii(nasobnaCervena)
 vyhodnotStrategii(nasobnaCerna)
+
+vyhodnotStrategii(nasobnaZelena,100)
+vyhodnotStrategii(nasobnaCervena,100)
+vyhodnotStrategii(nasobnaCerna,100)

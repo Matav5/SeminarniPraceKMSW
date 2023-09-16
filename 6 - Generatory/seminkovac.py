@@ -47,7 +47,7 @@ def vygenerujSeminka( pocet, size=2**16):
         seminka.append(seminko)
     return (seminka,stejneSeminka)
 
-vystup = vygenerujSeminka(10000,2**32)
+vystup = vygenerujSeminka(10000,2**32)  
 
 
 print(f"Generátor běžel na: {time.perf_counter() - timer:0.04f} sekund")
